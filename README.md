@@ -27,13 +27,13 @@ Suivez ces étapes pour configurer le projet sur votre machine locale :
 **Clonez le repository :**
 
 ```bash
-git clone https://github.com/HarounaTraore/API-gestion-recette.git
+git clone https://github.com/AbderahmaneThimbo/gestion-recette-api.git
 ```
 
 **Accédez au dossier du projet :**
 
 ```bash
-cd order-manager-app
+cd gestion-recette-api
 ```
 
 **Installez les dépendances :**
@@ -69,32 +69,36 @@ L'API sera accessible à `http://localhost:3000`.
 
 ## Endpoints de l'API
 
+### **Recette** 
+
 ### GET /recettes
 
-- **Description** : Récupère toutes les recettes.
+- **Description** : Récupère toutes les recettes. **http://localhost:3000/recettes**
 - **Réponse** :
 
 ```json
 [
-  {
-    "id": 1,
-    "titre": "Tarte aux pommes",
-    "type": "Dessert",
-    "ingrédients": "Pommes, Sucre, Pâte"
-  }
+   {
+        "id": 2,
+        "titre": "Poulet rôti",
+        "type": "Plat Principal",
+        "ingredients": "Poulet, Beurre, Ail, Herbes",
+        "categorie_id": 2
+   }
 ]
 ```
 
 ### POST /recettes
 
-- **Description** : Crée une nouvelle recette.
+- **Description** : Crée une nouvelle recette. **http://localhost:3000/recettes**
 - **Corps de la requête** :
 
 ```json
 {
   "titre": "Salade César",
   "type": "Entrée",
-  "ingrédients": "Laitue, Poulet, Parmesan, Croutons"
+  "ingrédients": "Laitue, Poulet, Parmesan, Croutons",
+  "categorie_id": 1
 }
 ```
 
@@ -108,14 +112,15 @@ L'API sera accessible à `http://localhost:3000`.
 
 ### PUT /recettes/:id
 
-- **Description** : Met à jour une recette existante.
+- **Description** : Met à jour une recette existante par ID. **http://localhost:3000/recettes/5**
 - **Corps de la requête** :
 
 ```json
 {
   "titre": "Pizza améliorée",
   "type": "Plat principal",
-  "ingrédients": "Tomates, Fromage, Pâte, Basilic"
+  "ingrédients": "Tomates, Fromage, Pâte, Basilic",
+  "categorie_id": 2
 }
 ```
 
@@ -129,12 +134,85 @@ L'API sera accessible à `http://localhost:3000`.
 
 ### DELETE /recettes/:id
 
-- **Description** : Supprime une recette par ID.
+- **Description** : Supprime une recette par ID. **http://localhost:3000/recettes/5**
 - **Réponse** :
 
 ```json
 {
   "message": "Recette supprimée avec succès"
+}
+```
+
+
+
+### **Categories** 
+
+
+### GET /categories
+
+- **Description** : Récupère toutes les categories. **http://localhost:3000/categories**
+- **Réponse** :
+
+```json
+[
+   {
+        "id": 1,
+        "nom": "Apéritif"
+   },
+    {
+        "id": 2,
+        "nom": "Apéri"
+   }
+]
+```
+
+### POST /categories
+
+- **Description** : Crée une nouvelle categorie. **http://localhost:3000/categories**
+- **Corps de la requête** :
+
+```json
+{
+   "nom": "Apéritif"
+}
+
+```
+- **Réponse** :
+
+```json
+{
+  "message": "Categorie ajoutée avec succès"
+}
+```
+
+### PUT /categories
+
+- **Description** : Met à jour une  categorie. **http://localhost:3000/categories/6**
+- **Corps de la requête** :
+
+```json
+{
+   "nom": "Apéri"
+}
+
+```
+- **Réponse** :
+
+```json
+{
+  "message": "Categorie modifiée avec succès"
+}
+```
+
+### DELETE /categories
+
+- **Description** : Supprime une categorie par ID. **http://localhost:3000/categories/6**
+
+- **Réponse** :
+
+```json
+{
+  "message": "Categorie supprimer avec succès"
 }
 ```
 
@@ -183,13 +261,13 @@ Ce projet utilise **Docker** pour la containerisation, ce qui permet de déploye
 
 Pour tester les différents endpoints de l'API, vous pouvez utiliser la collection Postman incluse dans ce projet. Elle contient toutes les requêtes configurées pour interagir avec l'API.
 
-- **Exporter la collection** : `gestion-recette-API.postman_collection.json`
+- **Exporter les collections** : `Gestion-recette.postman_collection.json` `Categorie.postman_collection.json`
 - **Importer dans Postman** et exécuter les requêtes.
 
 ## Auteur
 
-[Harouna Traoré](https://github.com/HarounaTraore)
+[Abderahmane Thimbo](https://github.com/AbderahmaneThimbo)
 
 ## Contributeur
 
-[Abderahmane Thimbo](https://github.com/AbderahmaneThimbo)
+[Harouna Traoré](https://github.com/HarounaTraore)
