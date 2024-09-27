@@ -16,7 +16,7 @@ const addCategoryValidator = [
     .custom(async (value) => {
       const result = await CategorieModel.checkCategorie(value);
       if (result !== 0) {
-        throw new Error("Deux categorie ne peuvent pas avoir même nom!");
+        console.log("Deux categorie ne peuvent pas avoir même nom!");
       }
       return true;
     }),
