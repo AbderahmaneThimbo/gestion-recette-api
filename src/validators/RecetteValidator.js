@@ -3,7 +3,6 @@ import { StatusCodes } from "http-status-codes";
 import RecetteModel from "../models/RecetteModel.js";
 import CategorieModel from "../models/CategorieModel.js";
 
-
 const addRequestValidator = [
   check("titre")
     .not()
@@ -22,7 +21,7 @@ const addRequestValidator = [
       }
       return true;
     }),
-    check("ingredients")
+  check("ingredients")
     .notEmpty()
     .withMessage("Ingredients ne peut pas être vide!")
     .bail()

@@ -2,7 +2,6 @@ import { check, param, validationResult } from "express-validator";
 import { StatusCodes } from "http-status-codes";
 import CategorieModel from "../models/CategorieModel.js";
 
-
 const addCategoryValidator = [
   check("nom")
     .not()
@@ -21,7 +20,7 @@ const addCategoryValidator = [
       }
       return true;
     }),
-    
+
   (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty())
@@ -92,4 +91,8 @@ const deleteCategoryValidator = [
   },
 ];
 
-export { addCategoryValidator, updateCategoryValidator, deleteCategoryValidator };
+export {
+  addCategoryValidator,
+  updateCategoryValidator,
+  deleteCategoryValidator,
+};

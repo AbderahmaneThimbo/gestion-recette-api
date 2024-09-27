@@ -23,19 +23,19 @@ export default class RecetteModel {
     }
   }
 
-  static async createRecette(titre, type, ingredients, categorie_id ) {
+  static async createRecette(titre, type, ingredients, categorie_id) {
     const connection = await pool.getConnection();
     const sql =
       "INSERT INTO recettes (titre, type, ingredients,  categorie_id) VALUES (?, ?, ?, ?)";
-    await connection.execute(sql, [titre, type, ingredients,  categorie_id]);
+    await connection.execute(sql, [titre, type, ingredients, categorie_id]);
     return true;
   }
 
-  static async updateRecette(id, titre, type, ingredients,  categorie_id) {
+  static async updateRecette(id, titre, type, ingredients, categorie_id) {
     const connection = await pool.getConnection();
     const sql =
       "UPDATE recettes SET titre = ?, type = ?, ingredients = ?,  categorie_id = ? WHERE id = ?";
-    await connection.execute(sql, [titre, type, ingredients,  categorie_id, id]);
+    await connection.execute(sql, [titre, type, ingredients, categorie_id, id]);
     return true;
   }
 

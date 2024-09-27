@@ -59,7 +59,6 @@ DB_NAME=gestion_recette
 
 ## Utilisation
 
-
 Pour démarrer l'application :
 
 ```bash

@@ -1,6 +1,5 @@
 import CategorieModel from "../models/CategorieModel.js";
 
-
 export default class CategorieController {
   static async getById(req, res, next) {
     try {

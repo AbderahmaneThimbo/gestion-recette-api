@@ -3,9 +3,10 @@ import { pool } from "../db/db.js";
 export default class CategorieModel {
   static async getById(id) {
     const con = await pool.getConnection();
-    const [result] = await con.execute("SELECT * FROM categories WHERE id = ?", [
-      id,
-    ]);
+    const [result] = await con.execute(
+      "SELECT * FROM categories WHERE id = ?",
+      [id],
+    );
 
     return result.length;
   }
@@ -25,16 +26,14 @@ export default class CategorieModel {
 
   static async createCategorie(nom) {
     const connection = await pool.getConnection();
-    const sql =
-      "INSERT INTO categories (nom) VALUES (?)";
+    const sql = "INSERT INTO categories (nom) VALUES (?)";
     await connection.execute(sql, [nom]);
     return true;
   }
 
   static async updateCategorie(id, nom) {
     const connection = await pool.getConnection();
-    const sql =
-      "UPDATE categories SET nom = ? WHERE id = ?";
+    const sql = "UPDATE categories SET nom = ? WHERE id = ?";
     await connection.execute(sql, [nom, id]);
     return true;
   }
