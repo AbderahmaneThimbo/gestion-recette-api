@@ -14,7 +14,7 @@ describe("Recette tests", () => {
     );
 
     recetteId = result.insertId;
-    expect(result).toEqual(true);
+    expect(result).not.toBe(null);
   });
 
   it("can be updated", async () => {
@@ -25,7 +25,7 @@ describe("Recette tests", () => {
     };
 
     const updateResult = await Recette.updateRecette(
-      18,
+      recetteId,
       updatedRecette.titre,
       updatedRecette.type,
       updatedRecette.ingrédients,
@@ -43,7 +43,7 @@ describe("Recette tests", () => {
   });
 
   it("can be deleted", async () => {
-    const result = await Recette.deleteRecette(17);
+    const result = await Recette.deleteRecette(recetteId);
 
     expect(result.affectedRows).toEqual(1);
   });
