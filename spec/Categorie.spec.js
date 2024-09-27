@@ -1,41 +1,60 @@
-// import Categorie from "../src/models/CategorieModel.js";
+import Categorie from "../src/models/CategorieModel.js";
 
-// describe("Categorie tests", () => {
-//   let categorieId = null;
+describe("Categorie tests", () => {
+  let categorieId = null;
 
-//   it("can be created", async () => {
-//     const categorie = { nom: "crepe"};
-//     const result = await Categorie.createCategorie(
-//       categorie.titre
-//     );
+  it("can be created", async () => {
+    const categorie = { nom: "crepe" };
+    const result = await Categorie.createCategorie(categorie.nom);
 
-//     categorieId = result.insertId;
-//     expect(result).toEqual(true);
-//   });
+    categorieId = result.insertId;
+    expect(result).not.toBe(null);
+  });
 
-//   it("can be updated", async () => {
-//     const updatedCategorie = {
-//       nom: "gâteau",
-//     };
+  it("can be updated", async () => {
+    const updatedCategorie = {
+      nom: "gâteau",
+    };
 
-//     const updateResult = await Categorie.updateCategorie(
-//       4,
-//       updatedCategorie.titre,
-//     );
+    const updateResult = await Categorie.updateCategorie(
+      categorieId,
+      updatedCategorie.nom,
+    );
 
-//     expect(updateResult).toBe(true); 
-//   });
+    expect(updateResult.affectedRows).toBe(1);
+  });
 
-//   it("can get all category", async () => {
-//     const allCategories = await Categorie.getAllcategories();
+  it("fails to update a category that does not exist", async () => {
+    const invalidId = 999999;
+    const updatedRecette = {
+      nom: "gâteau",
+    };
 
-//     expect(allCategories).not.toBeNull();
-//     expect(allCategories.length).toBeGreaterThan(0);
-//   });
+    const updateResult = await Categorie.updateCategorie(
+      invalidId,
+      updatedRecette.nom,
+    );
 
-//   it("can be deleted", async () => {
-//     const result = await Categorie.deleteCategorie(5);
+    expect(updateResult.affectedRows).toBe(0);
+  });
 
-//     expect(result.affectedRows).toEqual(1);
-//   });
-// });
+  it("can get all category", async () => {
+    const allCategories = await Categorie.getAllcategories();
+
+    expect(allCategories).not.toBeNull();
+    expect(allCategories.length).toBeGreaterThan(0);
+  });
+
+  it("can be deleted", async () => {
+    const result = await Categorie.deleteCategorie(categorieId);
+
+    expect(result.affectedRows).toEqual(1);
+  });
+
+  it("fails to delete a category that does not exist", async () => {
+    const invalidId = 999999;
+    const deleteResult = await Categorie.deleteCategorie(invalidId);
+
+    expect(deleteResult.affectedRows).toBe(0);
+  });
+});

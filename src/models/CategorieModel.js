@@ -27,15 +27,15 @@ export default class CategorieModel {
   static async createCategorie(nom) {
     const connection = await pool.getConnection();
     const sql = "INSERT INTO categories (nom) VALUES (?)";
-    await connection.execute(sql, [nom]);
-    return true;
+    const [result] = await connection.execute(sql, [nom]);
+    return result;
   }
 
   static async updateCategorie(id, nom) {
     const connection = await pool.getConnection();
     const sql = "UPDATE categories SET nom = ? WHERE id = ?";
-    await connection.execute(sql, [nom, id]);
-    return true;
+    const [result] = await connection.execute(sql, [nom, id]);
+    return result;
   }
 
   static async deleteCategorie(id) {

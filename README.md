@@ -69,7 +69,7 @@ L'API sera accessible à `http://localhost:3000`.
 
 ## Endpoints de l'API
 
-### **Recette** 
+### **Recette**
 
 ### GET /recettes
 
@@ -78,13 +78,13 @@ L'API sera accessible à `http://localhost:3000`.
 
 ```json
 [
-   {
-        "id": 2,
-        "titre": "Poulet rôti",
-        "type": "Plat Principal",
-        "ingredients": "Poulet, Beurre, Ail, Herbes",
-        "categorie_id": 2
-   }
+  {
+    "id": 2,
+    "titre": "Poulet rôti",
+    "type": "Plat Principal",
+    "ingredients": "Poulet, Beurre, Ail, Herbes",
+    "categorie_id": 2
+  }
 ]
 ```
 
@@ -143,10 +143,7 @@ L'API sera accessible à `http://localhost:3000`.
 }
 ```
 
-
-
-### **Categories** 
-
+### **Categories**
 
 ### GET /categories
 
@@ -155,14 +152,14 @@ L'API sera accessible à `http://localhost:3000`.
 
 ```json
 [
-   {
-        "id": 1,
-        "nom": "Apéritif"
-   },
-    {
-        "id": 2,
-        "nom": "Apéri"
-   }
+  {
+    "id": 1,
+    "nom": "Apéritif"
+  },
+  {
+    "id": 2,
+    "nom": "Apéri"
+  }
 ]
 ```
 
@@ -173,10 +170,10 @@ L'API sera accessible à `http://localhost:3000`.
 
 ```json
 {
-   "nom": "Apéritif"
+  "nom": "Apéritif"
 }
-
 ```
+
 - **Réponse** :
 
 ```json
@@ -187,15 +184,15 @@ L'API sera accessible à `http://localhost:3000`.
 
 ### PUT /categories
 
-- **Description** : Met à jour une  categorie. **http://localhost:3000/categories/6**
+- **Description** : Met à jour une categorie. **http://localhost:3000/categories/6**
 - **Corps de la requête** :
 
 ```json
 {
-   "nom": "Apéri"
+  "nom": "Apéri"
 }
-
 ```
+
 - **Réponse** :
 
 ```json

@@ -27,7 +27,12 @@ export default class RecetteModel {
     const connection = await pool.getConnection();
     const sql =
       "INSERT INTO recettes (titre, type, ingredients,  categorie_id) VALUES (?, ?, ?, ?)";
-    const [result] = await connection.execute(sql, [titre, type, ingredients, categorie_id]);
+    const [result] = await connection.execute(sql, [
+      titre,
+      type,
+      ingredients,
+      categorie_id,
+    ]);
     return result;
   }
 
@@ -35,7 +40,13 @@ export default class RecetteModel {
     const connection = await pool.getConnection();
     const sql =
       "UPDATE recettes SET titre = ?, type = ?, ingredients = ?,  categorie_id = ? WHERE id = ?";
-      const [result] = await connection.execute(sql, [titre, type, ingredients, categorie_id, id]);
+    const [result] = await connection.execute(sql, [
+      titre,
+      type,
+      ingredients,
+      categorie_id,
+      id,
+    ]);
     return result;
   }
 
