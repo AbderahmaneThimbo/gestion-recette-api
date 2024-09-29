@@ -25,14 +25,14 @@ const addRequestValidator = [
     .notEmpty()
     .withMessage("Ingredients ne peut pas être vide!")
     .bail()
-    .isLength({ min: 10, max: 50 })
-    .withMessage("Entre 10 et 50 caractères!")
+    .isLength({ max: 50 })
+    .withMessage("Entre 1 et 50 caractères!")
     .bail(),
   check("type")
     .notEmpty()
     .withMessage("Type ne peut pas être vide!")
     .bail()
-    .isLength({ min: 4 })
+    .isLength({ min: 2 })
     .withMessage("Minimum 4 caractères requis!")
     .bail(),
   check("categorie_id")
@@ -73,8 +73,8 @@ const updateRequestValidator = [
     .notEmpty()
     .withMessage("Titre ne doit pas être vide")
     .bail()
-    .isLength({ min: 6 })
-    .withMessage("Minimum 6 caractères requis!")
+    .isLength({ min: 2 })
+    .withMessage("Minimum 2 caractères requis!")
     .bail()
     .custom(async (value) => {
       const result = await RecetteModel.checkRecette(value);
@@ -87,14 +87,14 @@ const updateRequestValidator = [
     .notEmpty()
     .withMessage("Ingredients ne peut pas être vide!")
     .bail()
-    .isLength({ min: 10, max: 50 })
-    .withMessage("Entre 10 et 50 caractères!")
+    .isLength({ min: 2, max: 50 })
+    .withMessage("Entre 2 et 50 caractères!")
     .bail(),
   check("type")
     .notEmpty()
     .withMessage("Type ne peut pas être vide!")
     .bail()
-    .isLength({ min: 4 })
+    .isLength({ min: 3 })
     .withMessage("Minimum 4 caractères requis!")
     .bail(),
   check("categorie_id")
