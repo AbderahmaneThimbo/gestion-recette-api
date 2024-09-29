@@ -8,13 +8,13 @@ describe("Recette tests", () => {
       titre: "crepe",
       type: "dessert",
       ingredients: "farine",
-      categorie_id: 1,
+      categorie_id: 2,
     };
     const result = await Recette.createRecette(
       recette.titre,
       recette.type,
       recette.ingredients,
-      recette.categorie_id,
+      recette.categorie_id
     );
 
     recetteId = result.insertId;
@@ -26,7 +26,7 @@ describe("Recette tests", () => {
       titre: "gâteau",
       type: "dessert",
       ingredients: "farine, sucre",
-      categorie_id: 1,
+      categorie_id: 2,
     };
 
     const updateResult = await Recette.updateRecette(
@@ -34,7 +34,7 @@ describe("Recette tests", () => {
       updatedRecette.titre,
       updatedRecette.type,
       updatedRecette.ingredients,
-      updatedRecette.categorie_id,
+      updatedRecette.categorie_id
     );
 
     expect(updateResult.affectedRows).toBe(1);
@@ -54,7 +54,7 @@ describe("Recette tests", () => {
       updatedRecette.titre,
       updatedRecette.type,
       updatedRecette.ingredients,
-      updatedRecette.categorie_id,
+      updatedRecette.categorie_id
     );
 
     expect(updateResult.affectedRows).toBe(0);
