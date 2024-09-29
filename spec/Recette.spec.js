@@ -8,7 +8,7 @@ describe("Recette tests", () => {
       titre: "crepe",
       type: "dessert",
       ingredients: "farine",
-      categorie_id: 2,
+      categorie_id: 1,
     };
     const result = await Recette.createRecette(
       recette.titre,
@@ -26,7 +26,7 @@ describe("Recette tests", () => {
       titre: "gâteau",
       type: "dessert",
       ingredients: "farine, sucre",
-      categorie_id: 2,
+      categorie_id: 1,
     };
 
     const updateResult = await Recette.updateRecette(
