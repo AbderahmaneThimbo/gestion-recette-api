@@ -10,8 +10,8 @@ const addRequestValidator = [
     .withMessage("Titre est oblgatoire")
     .bail()
 
-    .isLength({ min: 3 })
-    .withMessage("Minimun 3 caractère requis!")
+    .isLength({ min: 5, max: 100  })
+    .withMessage("Le titre doit contenir entre 5 et 100 caractères!")
     .bail()
 
     .custom(async (value) => {
@@ -21,20 +21,23 @@ const addRequestValidator = [
       }
       return true;
     }),
+  
   check("ingredients")
     .notEmpty()
     .withMessage("Ingredients ne peut pas être vide!")
     .bail()
-    .isLength({ max: 50 })
-    .withMessage("Entre 1 et 50 caractères!")
+    .isLength({ min: 10, max: 500 })
+    .withMessage("Les ingrédients doivent contenir entre 10 et 500 caractères")
     .bail(),
+  
   check("type")
     .notEmpty()
     .withMessage("Type ne peut pas être vide!")
     .bail()
-    .isLength({ min: 2 })
-    .withMessage("Minimum 4 caractères requis!")
+    .isIn(["Entrée", "Plat", "Dessert"])
+    .withMessage('Le type doit être "entrée", "plat" ou "dessert"')
     .bail(),
+  
   check("categorie_id")
     .notEmpty()
     .withMessage("L'id du categorie  est requis!")
@@ -69,12 +72,13 @@ const updateRequestValidator = [
       }
       return true;
     }),
+  
   check("titre")
     .notEmpty()
     .withMessage("Titre ne doit pas être vide")
     .bail()
-    .isLength({ min: 2 })
-    .withMessage("Minimum 2 caractères requis!")
+    .isLength({min: 5, max: 100})
+    .withMessage("Le titre doit contenir entre 5 et 100 caractères")
     .bail()
     .custom(async (value) => {
       const result = await RecetteModel.checkRecette(value);
@@ -83,20 +87,23 @@ const updateRequestValidator = [
       }
       return true;
     }),
+  
   check("ingredients")
     .notEmpty()
     .withMessage("Ingredients ne peut pas être vide!")
     .bail()
-    .isLength({ min: 2, max: 50 })
-    .withMessage("Entre 2 et 50 caractères!")
+    .isLength({ min: 10, max: 500 })
+    .withMessage("Les ingrédients doivent contenir entre 10 et 500 caractères")
     .bail(),
+  
   check("type")
     .notEmpty()
     .withMessage("Type ne peut pas être vide!")
     .bail()
-    .isLength({ min: 3 })
-    .withMessage("Minimum 4 caractères requis!")
+    .isIn(["Entrée", "Plat", "Dessert"])
+    .withMessage('Le type doit être "entrée", "plat" ou "dessert"')
     .bail(),
+  
   check("categorie_id")
     .notEmpty()
     .withMessage("L'id du categorie  est requis!")
@@ -118,6 +125,7 @@ const updateRequestValidator = [
     next();
   },
 ];
+
 const deleteRequestValidator = [
   param("id")
     .not()
