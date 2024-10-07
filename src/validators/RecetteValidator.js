@@ -82,7 +82,7 @@ const updateRequestValidator = [
     .bail()
     .custom(async (value) => {
       const result = await RecetteModel.checkRecette(value);
-      if (result !== 0) {
+      if (result > 1) {
         throw new Error("Cette recette existe déjà!");
       }
       return true;

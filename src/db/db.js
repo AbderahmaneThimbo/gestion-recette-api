@@ -4,13 +4,12 @@ import { createPool } from "mysql2/promise";
 config();
 
 export const pool = createPool({
-  host: "localhost",
+  host: process.env.DB_HOST,
   user: process.env.DB_USER,
+  port: process.env.DB_HOST,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
-  waitForConnections: process.env.WFC === "true",
   connectionLimit: false,
-  queueLimit: parseInt(process.env.QL) || 0,
   connectTimeout: false,
 });
 
