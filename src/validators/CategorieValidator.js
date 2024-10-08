@@ -9,8 +9,8 @@ const addCategoryValidator = [
     .withMessage("Nom est oblgatoire")
     .bail()
 
-    .isLength({ max: 50 })
-    .withMessage("Maximun 50 caractère requis!")
+    .isLength({ max: 100 })
+    .withMessage("Maximun 100 caractère requis!")
     .bail()
 
     .custom(async (value) => {
@@ -47,8 +47,8 @@ const updateCategoryValidator = [
     .notEmpty()
     .withMessage("Nom ne doit pas être vide")
     .bail()
-    .isLength({ max: 50 })
-    .withMessage("Maximum 50 caractères requis!")
+    .isLength({ max: 100 })
+    .withMessage("Maximum 100 caractères requis!")
     .bail()
     .custom(async (value) => {
       const result = await CategorieModel.checkCategorie(value);
